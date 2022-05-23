@@ -1,0 +1,80 @@
+---
+title: "Master's Project"
+author: "Ignacio Leiva"
+institute: "Charite"
+date: "October"
+output:
+  xaringan::moon_reader:
+    css: 
+      - default
+      - css/thesis.css
+      - css/thesis-fonts.css
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: googlecode
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      after_body: [css/logo.html]
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+library(tidyverse)
+# set default options
+opts_chunk$set(echo = FALSE,
+               fig.width = 7.252,
+               fig.height = 4,
+               dpi = 300)
+
+```
+
+class: title-slide, center, middle
+
+# `r rmarkdown::metadata$title`
+<br>
+### .black[`r rmarkdown::metadata$author`]
+
+---
+class: inverse, middle, center
+
+# "Relationship between socioeconomic status, adherence to antiretroviral therapy and HIV viral suppression"
+<br>
+<br>
+<br>
+<br>
+
+.pull-left[
+**Dr. Claudia Cortes**
+
+Fundación Arrirán,Chile
+]
+.pull-right[
+**Dr. Barbara Gunsenheimer-Bartmeyer**
+
+Robert Koch Institute
+
+]
+
+
+---
+
+# .charite[Background]
+
+
+- 5,000 new cases (  63% vs 2010)
+
+- 77,000 PLWHA hhh
+hhhh
+
+pove what is hapening
+- 7,000 do not know their status
+
+- 70% are receiving ART
+
+- 63%  viral suppression
+
+---
