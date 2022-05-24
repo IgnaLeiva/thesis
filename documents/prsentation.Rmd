@@ -79,4 +79,136 @@ pove what is hapening
 -funciona? worksd
 
 ---
-# new slide
+
+# Varible distribution
+
+
+```{r, warning=FALSE, message=FALSE}
+library(knitr)
+library(finalfit)
+library(kableExtra)
+library(table1)
+#library(DT)
+#library(readxl)
+dataset_thesis <- readxl::read_excel("summary.xlsx", sheet = 1)
+
+
+dataset_thesis <- dataset_thesis %>%
+        dplyr::mutate(PDC3.factor =
+        PDC %>%
+        cut(breaks = c(0, 0.8, 0.9, max(PDC, na.rm=TRUE)),
+            include.lowest = T, right=F),
+        
+        PDC3.factor =
+        fct_recode(PDC3.factor, "poor" = "[0,0.8)", #"poor = 1
+                                "Suboptimal" = "[0.8,0.9)", #suboptimal = 2
+                                "Optimal" = "[0.9,1]",) %>%  #optimal = 3
+          ff_label("adherence levels"),
+        
+        PDC2.factor = 
+          factor(ifelse(PDC>= 0.9, "0", "1"), labels = c("yes", "no"))%>% #nonAdherent = 1, adherent = 0
+          ff_label("Adherence status (adh = 0, non_ad = 1"),
+        
+        comorbidities = factor(comorbidities), # have = 0, not= 1
+      
+        VL50.factor = 
+          factor(ifelse(vl < 50 , "0", "1"), labels = c("yes", "no"))%>% # ldl = 0, detectable = 1
+          ff_label("Viral load status (50 cp)"),
+        
+        VL200.factor = 
+          factor(ifelse(vl < 200 , "0", "1"), labels = c("yes", "no"))%>% # ldl = 0, detectable = 1
+          ff_label("Viral load status (200 cp)"),
+        
+        employment = 
+          factor(employment)%>% 
+          ff_label("Employment Status"),
+        
+        level_hi=
+          factor(level_hi)%>% 
+          ff_label("Health Insurance Strata"),
+         migrant = factor(migrant),
+        prio_level = factor(prio_level),
+        str_mtr = as.factor(str_mtr),
+         arv_class = factor(arv_class),
+        sex = factor(sex, labels = c("men", "trans", "women")),
+        level_education = factor(level_education),
+        
+        arv_class2 = ifelse(arv_class == "ITIAN+ITINN", "NNRTIs", ifelse(arv_class == "ITIAN/ITINN", "NNRTIs", ifelse(arv_class == "ITIAN/II", "INSTI", ifelse(arv_class == "ITIAN+II", "INSTI", ifelse(arv_class == "ITIAN+II/II", "INSTI", ifelse(arv_class == "ITIAN/IP", "PI", ifelse(arv_class == "ITIAN/IP/P+", "PI", ifelse(arv_class == "ITIAN/IP/II/P+", "INSTI,PI",  ifelse(arv_class == "ITIAN+II/IP", "INSTI,PI", ifelse(arv_class == "IP/II/P+", "INSTI,PI", ifelse(arv_class == "IP/II", "INSTI,PI", ifelse(arv_class == "ITINN/IP/P+", "NNRTIs, PI", ifelse(arv_class == "ITINN/IP/II/P+", "NNRTIs, INSTI, PI", ifelse(arv_class == "ITIAN/", "Trial", NA)))))))))))))),
+         arv_class3 = factor(ifelse(arv_class2 == "NNRTIs, PI", "Others", ifelse(arv_class2 == "INSTI,PI", "Others", ifelse(arv_class2 == "NNRTIs, INSTI, PI", "Others", arv_class2)))),
+         
+         n_pills_fac2 = factor(ifelse(n_pills_arv == 1, "one", ifelse(n_pills_arv == 2, "two", ifelse(n_pills_arv == 3, "three", ifelse(n_pills_arv >= 4, ">four", arv_class2))))),
+         
+         SPI2 = factor(ifelse(SPI < 64.22, "no", "yes")) #cut-off
+        )
+
+
+
+label(dataset_thesis$sex) <- "Sex"
+label(dataset_thesis$age) <- "Age (y)"
+label(dataset_thesis$level_hi) <- "Health Insurance Level"
+label(dataset_thesis$employment) <- "Employment Status"
+label(dataset_thesis$VL50.factor) <- "Viral Load < 50 copies/mL"
+label(dataset_thesis$VL200.factor) <- "Viral Load < 200 copies/mL"
+label(dataset_thesis$PDC2.factor) <- "PDC >= 90%"
+label(dataset_thesis$PDC3.factor) <- "PDC"
+label(dataset_thesis$comorbidities) <- "Chronic diseases"
+
+x <-table1(~ sex+ age + level_hi , data= dataset_thesis ,caption="Variables distrubution")
+
+kableExtra::kable_styling(t1kable(x), bootstrap_options="responsive", stripe_color="white")%>% 
+column_spec(1,width = "8cm", bold = F)
+
+
+
+#kable(head(dataset_thesis), format = "pipe", # this is the default
+# digits = getOption("digits"), row.names = NA, align = 'lrcr',
+ # col.names = gsub("[.]", " ", names(dataset_thesis)),  caption = "kable Table")
+```
+---
+class: center, middle
+
+```{r, warning=FALSE, message=FALSE}
+
+y <-table1(~  employment + VL50.factor+  VL200.factor , data= dataset_thesis ,caption="Variables distrubution")
+
+kableExtra::kable_styling(t1kable(y), bootstrap_options="responsive", stripe_color="white")%>% 
+column_spec(1,width = "8cm", bold = F)
+```
+
+---
+class: center, middle
+
+```{r, warning=FALSE, message=FALSE}
+
+a <-table1(~  PDC2.factor + PDC3.factor + comorbidities, data= dataset_thesis ,caption="Variables distrubution")
+
+kableExtra::kable_styling(t1kable(a), bootstrap_options="responsive", stripe_color="white")%>% 
+column_spec(1,width = "8cm", bold = F)
+```
+
+---
+# Proportion of days covered (PDC), AdhereR
+
+```{r}
+library(AdhereR)
+pdc <- readxl::read_excel("PDC.xlsx", sheet = 1)
+
+PDC12m <- CMA7(data= pdc, # we're estimating CMA8 now!
+             ID.colname="id",
+             event.date.colname="date",
+             event.duration.colname="days",
+             event.daily.dose.colname="perday",
+             medication.class.colname="drug",
+             carry.only.for.same.medication=TRUE,
+             consider.dosage.change=FALSE,
+             followup.window.start=0, 
+            followup.window.start.unit= "days",
+            followup.window.duration= 180,
+            observation.window.start= 0, #TO DETERMINE WHEN START, BUT LOOKIN THE NUMBER
+            observation.window.start.unit="days",
+             observation.window.duration=60,
+             date.format= "%m/%d/%Y")
+
+plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
+```
+

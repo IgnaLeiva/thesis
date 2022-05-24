@@ -11,20 +11,20 @@ a:hover {
 
 /*-- HEADINGS --*/
 .remark-slide-content h1 {
-  color:              #005EB8;
+  color:              #000000 ;
   font-size:          45px;
   line-height:        1em;
 }
 
 .remark-slide-content h2 {
   font-size:          35px;
-  color:              #005EB8;
+  color:              #000000 ;
   line-height:        1em;
 }
 
 .remark-slide-content h3 {
   font-size:          25px;
-  color:              #005EB8;
+  color:              #000000 ;
 }
 
 li{
@@ -101,18 +101,18 @@ pre code {
 /*-- TABLES --*/
 .remark-slide table {
   margin:              auto;
-  border-top:          1px solid #768692;
-  border-bottom:       1px solid #768692;
+  border-top:          1px solid #eda4a4;
+  border-bottom:       1px solid #eda4a4;
 }
 
 /*-- Table header --*/
 .remark-slide table thead th {
-  border-bottom:       1px solid #768692;
+  border-bottom:       1px solid #eda4a4;
 }
 
 /*-- Table rows (even) --*/
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) {
-  background:          #E8EDEE;
+  background:          #f7dcdc;
 }
 
 /*-- BLOCK QUOTE --*/

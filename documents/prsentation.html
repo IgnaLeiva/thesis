@@ -6,6 +6,8 @@
     <meta name="author" content="Ignacio Leiva" />
     <script src="libs/header-attrs-2.13.3/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/thesis.css" type="text/css" />
     <link rel="stylesheet" href="css/thesis-fonts.css" type="text/css" />
   </head>
@@ -62,7 +64,169 @@ pove what is hapening
 -funciona? worksd
 
 ---
-# new slide
+
+# Varible distribution
+
+
+&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Variables distrubution&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Sex&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; men &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 697 (93.2%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; trans &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 (0.8%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; women &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 45 (6.0%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Age (y)&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Mean (SD) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 39.3 (10.5) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Median [Min, Max] &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 37.4 [19.5, 76.6] &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Health Insurance Level&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; AB &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 370 (49.5%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 115 (15.4%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 263 (35.2%) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+class: center, middle
+
+&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Variables distrubution&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Employment Status&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; employment &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 521 (69.7%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; retired &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 24 (3.2%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; student &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 47 (6.3%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; unemployment &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 156 (20.9%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Viral Load &amp;lt; 50 copies/mL&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 690 (92.2%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 58 (7.8%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Viral Load &amp;lt; 200 copies/mL&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 723 (96.7%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 25 (3.3%) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+class: center, middle
+
+&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Variables distrubution&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;PDC &amp;gt;= 90%&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 546 (73.0%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 202 (27.0%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;PDC&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; poor &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 114 (15.2%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Suboptimal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 88 (11.8%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Optimal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 546 (73.0%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Chronic diseases&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 472 (63.1%) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 276 (36.9%) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Proportion of days covered (PDC), AdhereR
+
+![](prsentation_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
