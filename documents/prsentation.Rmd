@@ -151,7 +151,7 @@ label(dataset_thesis$VL50.factor) <- "Viral Load < 50 copies/mL"
 label(dataset_thesis$VL200.factor) <- "Viral Load < 200 copies/mL"
 label(dataset_thesis$PDC2.factor) <- "PDC >= 90%"
 label(dataset_thesis$PDC3.factor) <- "PDC"
-label(dataset_thesis$comorbidities) <- "Chronic diseases"
+label(dataset_thesis$comorbidities) <- "Other Chronic diseases"
 
 x <-table1(~ sex+ age + level_hi , data= dataset_thesis ,caption="Variables distrubution")
 
@@ -211,4 +211,5 @@ PDC12m <- CMA7(data= pdc, # we're estimating CMA8 now!
 
 plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 ```
-
+----
+bybyy
