@@ -21,6 +21,7 @@ output:
       after_body: [css/logo.html]
 ---
 
+
 ```{r setup, include = FALSE}
 library(knitr)
 library(tidyverse)
@@ -153,6 +154,16 @@ label(dataset_thesis$PDC2.factor) <- "PDC >= 90%"
 label(dataset_thesis$PDC3.factor) <- "PDC"
 label(dataset_thesis$comorbidities) <- "Other Chronic diseases"
 
+```
+
+
+```{css, echo = F}
+table {
+  font-size: 14px;     
+}
+```
+
+```{r, warning=FALSE, message=FALSE}
 x <-table1(~ sex+ age + level_hi , data= dataset_thesis ,caption="Variables distrubution")
 
 kableExtra::kable_styling(t1kable(x), bootstrap_options="responsive", stripe_color="white")%>% 
@@ -165,9 +176,12 @@ column_spec(1,width = "8cm", bold = F)
  # col.names = gsub("[.]", " ", names(dataset_thesis)),  caption = "kable Table")
 ```
 ---
+
 class: center, middle
 
 ```{r, warning=FALSE, message=FALSE}
+
+
 
 y <-table1(~  employment + VL50.factor+  VL200.factor , data= dataset_thesis ,caption="Variables distrubution")
 
