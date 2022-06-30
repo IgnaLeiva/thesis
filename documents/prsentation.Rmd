@@ -226,4 +226,6 @@ PDC12m <- CMA7(data= pdc, # we're estimating CMA8 now!
 plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 ```
 ----
-bybyy
+class: center, middle
+
+this is an example
