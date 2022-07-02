@@ -79,9 +79,10 @@ pove what is hapening
 - 63%  viral suppression
 -funciona? worksd
 
+
 ---
 
-# Varible distribution
+# Variable distribution
 
 
 ```{r, warning=FALSE, message=FALSE}
@@ -166,8 +167,10 @@ table {
 ```{r, warning=FALSE, message=FALSE}
 x <-table1(~ sex+ age + level_hi , data= dataset_thesis ,caption="Variables distrubution")
 
-kableExtra::kable_styling(t1kable(x), bootstrap_options="responsive", stripe_color="white")%>% 
+x1 <- kableExtra::kable_styling(t1kable(x), bootstrap_options="responsive", stripe_color="white")%>% 
 column_spec(1,width = "8cm", bold = F)
+
+add_footnote(x1, c("footnote 1", "footnote 2"), notation = "symbol")
 
 
 
@@ -185,8 +188,10 @@ class: center, middle
 
 y <-table1(~  employment + VL50.factor+  VL200.factor , data= dataset_thesis ,caption="Variables distrubution")
 
-kableExtra::kable_styling(t1kable(y), bootstrap_options="responsive", stripe_color="white")%>% 
+y1 <- kableExtra::kable_styling(t1kable(y), bootstrap_options="responsive", stripe_color="white")%>% 
 column_spec(1,width = "8cm", bold = F)
+
+add_footnote(y1, c("footnote 1", "footnote 2"), notation = "alphabet")
 ```
 
 ---
@@ -196,8 +201,9 @@ class: center, middle
 
 a <-table1(~  PDC2.factor + PDC3.factor + comorbidities, data= dataset_thesis ,caption="Variables distrubution")
 
-kableExtra::kable_styling(t1kable(a), bootstrap_options="responsive", stripe_color="white")%>% 
-column_spec(1,width = "8cm", bold = F)
+footnote(kableExtra::kable_styling(t1kable(a), bootstrap_options="responsive", stripe_color="white")%>% 
+column_spec(1,width = "8cm", bold = F), alphabet = c("Note a", "Note b"))
+
 ```
 
 ---
