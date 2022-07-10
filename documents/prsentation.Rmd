@@ -223,7 +223,7 @@ DT::datatable(outcome, class = "display", rownames = FALSE, options = list(dom =
 ```
 
 ---
-### Exposure
+### Exposures
 
 ```{r}
 
