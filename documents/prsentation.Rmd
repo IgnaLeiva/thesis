@@ -413,6 +413,19 @@ datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
    
 .pull-left[
 ## .charite[PDC Outcome]
-- PDC has been considered a good adherence proxy.
+- PDC has been considered a good adherence proxy
+- Education plays a role.
+
 
    ]
+---
+# .charite[Limitations]
+
+- Study design does not enable to know temporal sequence. It means that results should not be interpreted as explicit effect.
+
+- Selection bias (external validation)
+- Response bias (social-desirability bias)
+- Survey was conducted during COVID (employment affected)
+- Some difficulties to laboratory and medical care
+
+
