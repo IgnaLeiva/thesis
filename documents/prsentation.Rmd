@@ -132,8 +132,10 @@ plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 ---
 # Data Analysis 
 
+- Descriptive Statistic 
 - Variable selection using Directed Acyclic Graph (DAG) on Dagitty
 - Multivariable logistic regression
+- Analysis were run in R version 4.1.2 
 
 ---
 class: inverse, middle, center
@@ -165,7 +167,7 @@ class: inverse, middle, center
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
 class: 
-## .charite[Domographic]
+## .charite[Covariate distribution]
 
 
 ```{css, echo = F}
@@ -211,7 +213,7 @@ columnDefs = list(list(className = 'dt-center', targets = 1))))%>%
 ```
 
 ---
-## .charite[Outcomes]
+## .charite[Outcome distribution]
 ```{r}
 outcome <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/outcome.RData")
 
@@ -240,7 +242,7 @@ DT::datatable(outcome, class = "hover", rownames = FALSE, options = list(dom = '
 ```
 
 ---
-## .charite[Exposures]
+## .charite[Exposure distribution]
 
 ```{r}
 
@@ -400,6 +402,7 @@ datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
     `font-size`="16px"
   )
 ```
+
 ---
 # Discussion
 
