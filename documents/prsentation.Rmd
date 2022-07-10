@@ -164,13 +164,19 @@ class: inverse, middle, center
 
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
+class: 
 ### Domographic
+
+
 ```{css, echo = F}
 table {
   font-size: 16px;    
   line-height: 0.7em;
 }
+
+
 ```
+
 
 ```{r}
 covariates <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/covariates.RData")
@@ -182,7 +188,9 @@ covariates$variable[covariates$variable == "Did patient has chornic disease (no 
 covariates$variable[covariates$variable == "social_priority"] <- "Social priority"
 
 
-DT::datatable(covariates, class = "display", rownames = FALSE, options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 14))%>% 
+DT::datatable(covariates, class = "hover", rownames = FALSE, options = list(dom = 'tBp', pageLength = 14)#, width = 800,
+              #caption = 'Table 1: Demographic Distribution.'
+              )%>% 
   formatStyle(
     1,
     target = "row",
@@ -206,7 +214,8 @@ outcome <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documen
 outcome$variable[outcome$variable == "Adherence status (adh = 0, non_ad = 1"] <- "PDC (95%)"
 outcome$variable[outcome$variable == "adherence levels"] <- "PDC levels"
 
-DT::datatable(outcome, class = "display", rownames = FALSE, options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 14)) %>% 
+DT::datatable(outcome, class = "hover", rownames = FALSE, options = list(dom = 'tBp', dom = 'tip', pageLength = 14, info = FALSE, autoWidth = FALSE)#,caption = 'Table 2: Outcome distribution.'
+              ) %>% 
   formatStyle(
     1,
     target = "row",
@@ -234,7 +243,9 @@ exposure$variable[exposure$variable == "empl_status_3_factor"] <- "Employment St
 
 #widgetframe::frameWidget(demo)
 
-DT::datatable(exposure, class = "display", rownames = FALSE, options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 16))%>% 
+DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 'tBp', pageLength = 16)#,
+              #caption = 'Table 3: Exposure distribution.'
+              )%>% 
  formatStyle(
     1,
     target = "row",
@@ -297,7 +308,7 @@ ORVL$M<- "PRUEBA"
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # a custom table container
 sketch = htmltools::withTags(table(
-  class = 'display',
+  class = 'hover',
   thead(
     tr(
       th(rowspan = 2, 'Variable'),
@@ -316,7 +327,7 @@ sketch = htmltools::withTags(table(
 ```
 
 ```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORVL, container = sketch, rownames = TRUE,  options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13)) %>% 
+datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13)) %>% 
   formatStyle(
     0,
     target = "row",
@@ -357,7 +368,7 @@ names(ORPDC)[4] <- "p-value"
 
 
 ```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORPDC, rownames = TRUE,  options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13)) %>% 
+datatable(ORPDC, rownames = TRUE, class = "hover", options = list(dom = 'tBp', pageLength = 13)) %>% 
   formatStyle(
     0,
     target = "row",
