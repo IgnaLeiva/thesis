@@ -37,6 +37,13 @@ li{
   line-height:        1.2em;
 }
 
+/*-- CUSTOM the size --*/
+.my-one-page-font {
+  font-size:          30px;
+  line-height:        1.3em;
+  font-style:         italic;
+}
+
 /*-- HORIZONTAL BARS --*/
 hr {
   content:            none;
@@ -52,7 +59,7 @@ hr {
 .footnote {
   position:           absolute;
   bottom:             2em;
-  padding-right:      4em;
+  padding-right:      8em;
   font-size:          80%;
   line-height:        1.3em;
 }
@@ -101,24 +108,26 @@ pre code {
 /*-- TABLES --*/
 .remark-slide table {
   margin:              auto;
-  border-top:          1px solid #eda4a4;
-  border-bottom:       1px solid #eda4a4;
+  border-top:          1px solid #030303;
+  border-bottom:       1px solid #030303;
 }
 
 /*-- Table header --*/
 .remark-slide table thead th {
-  border-bottom:       1px solid #eda4a4;
+  border-bottom:       1px solid ##030303;
 }
 
 /*-- Table rows (even) --*/
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) {
-  background:          #f7dcdc;
+  background:          #ffffff;
 }
 
 /*-- BLOCK QUOTE --*/
-blockquote {
-  border-left:         solid 5px #E8EDEE;
-  padding-left:        1em;
+  blockquote {
+  background:          #faf5f5;
+  border-left:         solid 5px #9d0208;
+  margin:             1.5em 10px;
+  padding-left:        1.2em;
 }
 
 /*-- INVERSE SLIDE MODIFICATIONS --*/
@@ -179,3 +188,4 @@ blockquote {
 .warmyellow { color:   #FFB81C }
 .black      { color:   #000000 }
 .charite    { color:   #c1121f } 
+

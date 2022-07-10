@@ -6,8 +6,15 @@
     <meta name="author" content="Ignacio Leiva" />
     <script src="libs/header-attrs-2.13.3/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.22/datatables.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
     <link rel="stylesheet" href="css/thesis.css" type="text/css" />
     <link rel="stylesheet" href="css/thesis-fonts.css" type="text/css" />
   </head>
@@ -47,225 +54,123 @@ Robert Koch Institute
 
 
 ---
+class: middle
 
-# .charite[Background]
+#.charite[Research question]
 
 
-- 5,000 new cases (  63% vs 2010)
-
-- 77,000 PLWHA hhh
-hhhh
-
-pove what is hapening
-- 7,000 do not know their status
-
-- 70% are receiving ART
-
-- 63%  viral suppression
--funciona? worksd
+.my-one-page-font.center[How does **employment status** affect **antiretroviral treatment adherence** and **HIV viral suppression** among patients in a healthcare centre in Chile?]
 
 
 ---
+# Methodology
 
-# Variable distribution
+## .charite[Data source]
+- **Project**: An AI-based computer platform to characterize and identify the level of adherence to treatment among HIV+ people
+- Cross-sectional study (Feb-Nov 2021)
+  - Self-administer questionnaire
+  - Clinical data from pharmacy
+
+---
+# Variables
+.pull-left[
+### .charite[Outcomes/exposure]
+- VL at `\(\leq\)` 50 copies/mL and `\(\leq\)` 200 copies/mL
+- Proportion of days covered (PDC): Adherence proxy
+- Employment status (four or two levels)
+   ]
+   
+.pull-right[
+### .charite[Covariates]
+- Gender &amp; age (years)
+- Level of education (binary based on years)
+- Social priority (Metropolitan zone)
+- Type of ARV (STR &amp; family)
+- Migratory background (binary)
+- Commodities (binary)
+- Health insurance (strata from A to D)
+- Time on ARV (years)
+- Homelessness (binary)
+- Addictions (address with 1 question)
+   ]
+---
+# Operazionalization
+## Proportion of days covered (PDC), AdhereR
+
+![](prsentation_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+---
+# Data Analysis 
+
+- Variable selection using Directed Acyclic Graph (DAG) on Dagitty
+- Multivariable logistic regression
+
+---
+class: inverse, middle, center
+# Some results so far
+
+---
+## Variable selection 
+### Minimal sufficient adjustment sets the total effect of Employment status on Viral load and PDC. [See](http://dagitty.net/dags.html?id=UDvDOn)
+.pull-left[
+- Age (a)
+- Gender (g)
+- Education Level (e)
+- Addiction (ad)
+       ]
+.pull-right[
+- Homelessness (h)
+- Commodities (c)
+- Migratory background (m)&lt;sup&gt;1&lt;/sup&gt;
+- Social priority (s)
+    ]
 
 
 
+###Regression model
 
 
+&gt; `$$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$`
+
+.center[.footnote[&lt;sup&gt;1&lt;/sup&gt; check [Daggity](http://dagitty.net)]]
+---
+### Domographic
 &lt;style type="text/css"&gt;
 table {
-  font-size: 14px;     
+  font-size: 16px;    
+  line-height: 0.7em;
 }
 &lt;/style&gt;
 
-&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
-&lt;caption&gt;Variables distrubution&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Sex&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; men &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 697 (93.2%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; trans &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 6 (0.8%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; women &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 45 (6.0%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Age (y)&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Mean (SD) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 39.3 (10.5) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Median [Min, Max] &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 37.4 [19.5, 76.6] &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Health Insurance Level&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; AB &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 370 (49.5%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 115 (15.4%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; D &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 263 (35.2%) &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style = 'padding: 0; border:0;' colspan='100%'&gt;&lt;sup&gt;*&lt;/sup&gt; footnote 1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style = 'padding: 0; border:0;' colspan='100%'&gt;&lt;sup&gt;&amp;dagger;&lt;/sup&gt; footnote 2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
----
-
-class: center, middle
-
-&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
-&lt;caption&gt;Variables distrubution&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="4"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Employment Status&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; employment &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 521 (69.7%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; retired &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 24 (3.2%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; student &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 47 (6.3%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; unemployment &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 156 (20.9%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Viral Load &amp;lt; 50 copies/mL&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 690 (92.2%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 58 (7.8%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Viral Load &amp;lt; 200 copies/mL&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 723 (96.7%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 25 (3.3%) &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;
-&lt;td style = 'padding: 0; border:0;' colspan='100%'&gt;&lt;sup&gt;a&lt;/sup&gt; footnote 1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style = 'padding: 0; border:0;' colspan='100%'&gt;&lt;sup&gt;b&lt;/sup&gt; footnote 2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
+<div id="htmlwidget-0beb2d9ba28f419a2fd5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0beb2d9ba28f419a2fd5">{"x":{"filter":"none","vertical":false,"data":[["","Gender","  men","  Transgender","  women","Age","  Mean (SD)","  Median [Min, Max]","Education (years)","  1","  2","Comorbidities","  yes","  no","migrant","  no","  yes","addiction","  no","  yes","Social priority","  no","  yes"],["(N=748)","","697 (93.2%)","6 (0.802%)","45 (6.02%)","","39.3 (10.5)","37.4 [19.5, 76.6]","","204 (30.7%)","461 (69.3%)","","276 (36.9%)","472 (63.1%)","","547 (73.1%)","201 (26.9%)","","589 (79.9%)","148 (20.1%)","","545 (75.3%)","179 (24.7%)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":14,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Gender\" ? \"bold\" : value == \"Age\" ? \"bold\" : value == \"Education (years)\" ? \"bold\" : value == \"Comorbidities\" ? \"bold\" : value == \"migrant\" ? \"bold\" : value == \"addiction\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 
 ---
-class: center, middle
-
-&lt;table class="table table-responsive" style="margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
-&lt;caption&gt;Variables distrubution&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Overall &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;width: 8cm; "&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; (N=748) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;PDC &amp;gt;= 90%&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 546 (73.0%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 202 (27.0%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="3"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;PDC&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; poor &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 114 (15.2%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Suboptimal &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 88 (11.8%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; Optimal &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 546 (73.0%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr grouplength="2"&gt;&lt;td colspan="2" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Other Chronic diseases&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; no &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 472 (63.1%) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;padding-left: 2em;width: 8cm; " indentlevel="1"&gt; yes &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 276 (36.9%) &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;tfoot&gt;
-&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
-&lt;sup&gt;a&lt;/sup&gt; Note a&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
-&lt;sup&gt;b&lt;/sup&gt; Note b&lt;/td&gt;&lt;/tr&gt;
-&lt;/tfoot&gt;
-&lt;/table&gt;
+### Outcomes
+<div id="htmlwidget-d16fdaa6c0f1cf39c640" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d16fdaa6c0f1cf39c640">{"x":{"filter":"none","vertical":false,"data":[["","Viral load status (50 cp)","  detectable","  undetectable","Viral load status (200 cp)","  detectable","  undetectable","PDC (95%)","  adherent","  nonAdherent","PDC levels","  poor","  suboptimal","  optimal"],["(N=748)","","58 (7.8%)","690 (92.2%)","","25 (3.3%)","723 (96.7%)","","449 (60.0%)","299 (40.0%)","","114 (15.2%)","88 (11.8%)","546 (73.0%)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Overall<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":14,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Viral load status (50 cp)\" ? \"bold\" : value == \"Viral load status (200 cp)\" ? \"bold\" : value == \"PDC (95%)\" ? \"bold\" : value == \"PDC levels\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 
 ---
-# Proportion of days covered (PDC), AdhereR
+### Exposure
 
-![](prsentation_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+<div id="htmlwidget-90c49a53cccb020ba65d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90c49a53cccb020ba65d">{"x":{"filter":"none","vertical":false,"data":[["","Employment Status (4 Levels)","  employment","  retired","  student","  unemployment","Employment Status (2 Levels)","  employment","  unemployment"],["(N=748)","","521 (69.7%)","24 (3.21%)","47 (6.28%)","156 (20.9%)","","568 (75.9%)","180 (24.1%)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":16,"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,16,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4 Levels)\" ? \"bold\" : value == \"Employment Status (2 Levels)\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 ---
-class: center, middle
-
-this is an example three3
+### Odds Ratios VL ~ Employment Status
 
 
+
+
+
+<div id="htmlwidget-0a28d3f67b4ab5d342d0" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0a28d3f67b4ab5d342d0">{"x":{"filter":"none","vertical":false,"class":"display","data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","12","&gt;12","Addictions","No.","Yes."],["","Ref","1.866","0.473","1.819","","Ref","1.902","0.998","","Ref","12.48","1.6","","Ref","0.721","","Ref","0.553","","Ref","1.23"],["","","0.257","0.069","0.968","","","1.033","0.972","","","2.26","0.534","","","0.355","","","0.316","","","0.626"],["","","8.576","1.831","3.324","","","3.425","1.023","","","68.963","3.901","","","1.36","","","0.978","","","2.288"],["","","0.466","0.348","0.056","","","0.035","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"],["","Ref","0","0.427","1.324","","Ref","1.331","0.975","","Ref","16.35","2.393","","Ref","0.713","","Ref","0.611","","Ref","1.215"],["","","0","0.021","0.488","","","0.494","0.932","","","2.177","0.548","","","0.233","","","0.265","","","0.427"],["","","inf","2.611","3.265","","","3.264","1.015","","","89.033","7.348","","","1.807","","","1.459","","","3.005"],["","","0.987","0.447","0.557","","","0.548","0.242","","","0.002","0.173","","","0.509","","","0.253","","","0.69"],["PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA"],["PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA"],["PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th rowspan=\"2\">Variable<\/th>\n      <th colspan=\"4\">Viral Load 50 cp<\/th>\n      <th colspan=\"4\">Viral Load 200 cp<\/th>\n    <\/tr>\n    <tr>\n      <th>OR<\/th>\n      <th>CI.2.5<\/th>\n      <th>CI.97.5<\/th>\n      <th>p-value<\/th>\n      <th>OR<\/th>\n      <th>CI.2.5<\/th>\n      <th>CI.97.5<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":13,"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,13,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+
+---
+### Odds Ratios PDC ~ Employment Status
+
+
+
+<div id="htmlwidget-6904f8b210e43c52f122" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6904f8b210e43c52f122">{"x":{"filter":"none","vertical":false,"data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","12","&gt;12","Addictions","No.","Yes."],["","Ref","2.186","0.819","1.032","","Ref","1.113","0.998","","Ref","12.48","1.6","","Ref","0.721","","Ref","0.553","","Ref","1.23"],["","","0.769","0.42","0.699","","","0.768","0.972","","","2.26","0.534","","","0.355","","","0.316","","","0.626"],["","","5.97","1.581","1.515","","","1.61","1.023","","","68.963","3.901","","","1.36","","","0.978","","","2.288"],["","","0.13","0.552","0.874","","","0.569","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>OR<\/th>\n      <th>CI.2.5<\/th>\n      <th>CI.97.5<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":13,"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,13,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

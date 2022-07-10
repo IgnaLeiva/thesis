@@ -26,7 +26,6 @@ output:
 library(knitr)
 library(tidyverse)
 library(tufte)
-library(DT)
 # set default options
 opts_chunk$set(echo = FALSE,
                fig.width = 7.252,
@@ -71,7 +70,61 @@ class: middle
 
 .my-one-page-font.center[How does **employment status** affect **antiretroviral treatment adherence** and **HIV viral suppression** among patients in a healthcare centre in Chile?]
 
+---
+class: remark-slide 
+.content-box-green[gggggg]
+.Large .Large[This is a .content-box-blue[] chunk.] 144%
 
+```{r, warning=FALSE, message=FALSE, echo= FALSE}
+library(knitr)
+library(finalfit)
+library(kableExtra)
+library(table1)
+library(formatR)
+library(DT)
+#library(DT)
+#library(readxl)
+dataset_thesis <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/data.RData")
+
+label(dataset_thesis$sex) <- "Sex"
+label(dataset_thesis$age) <- "Age (y)"
+label(dataset_thesis$n_year_education) <- "Years of education"
+label(dataset_thesis$empl_status_factor) <- "Employment Status"
+label(dataset_thesis$empl_status_3_factor) <- "Employment Status 2"
+label(dataset_thesis$VL50.factor) <- "Viral Load < 50 copies/mL"
+label(dataset_thesis$VL200.factor) <- "Viral Load < 200 copies/mL"
+label(dataset_thesis$PDC2.factor) <- "PDC >= 90%"
+label(dataset_thesis$PDC95.factor) <- "PDC >= 95%"
+label(dataset_thesis$PDC3.factor) <- "PDC"
+label(dataset_thesis$comorbidities) <- "comorbidities"
+label(dataset_thesis$addiction) <- "addictions"
+label(dataset_thesis$migrant) <- "migrant background"
+label(dataset_thesis$social_priority) <- "Social priority"
+
+```
+
+
+```{css, echo = F}
+table {
+  font-size: 14px;    
+  line-height: 0.5em;
+}
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+demo1 <-table1(~ sex+ age + empl_status_factor + n_year_education +  comorbidities + migrant + addiction + social_priority , overall="Total", render.missing= NULL,
+    render.categorical="FREQ (PCTnoNA%)",data= dataset_thesis ,caption="baseline covariate characteristics", footnote="")
+
+kableExtra::kable_styling(t1kable(demo1), bootstrap_options="responsive", stripe_color="white", latex_options = "HOLD_position")%>% 
+column_spec(1,width = "8cm", bold = F)
+#add_footnote(x1, c("footnote 1", "footnote 2"), notation = "symbol")
+
+
+
+#kable(head(dataset_thesis), format = "pipe", # this is the default
+# digits = getOption("digits"), row.names = NA, align = 'lrcr',
+ # col.names = gsub("[.]", " ", names(dataset_thesis)),  caption = "kable Table")
+```
 ---
 # Methodology
 
@@ -109,6 +162,7 @@ class: middle
 
 ```{r}
 library(AdhereR)
+library(readxl)
 pdc <- readxl::read_excel("PDC.xlsx", sheet = 1)
 
 PDC12m <- CMA7(data= pdc, # we're estimating CMA8 now!
@@ -138,6 +192,18 @@ plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 ---
 class: inverse, middle, center
 # Some results so far
+---
+class: center, middle
+## Variable distribution by VL $\leq$ 50 copies/mL
+
+<img src="img/demoAll.png" width="500" height="500" />
+
+---
+class: center, middle
+## Variable distribution by VL $\leq$ 200 copies/mL
+
+
+<img src="img/tablevl200.png" width="500" height="500" />
 
 ---
 ## Variable selection 
@@ -154,7 +220,6 @@ class: inverse, middle, center
 - Migratory background (m)<sup>1</sup>
 - Social priority (s)
     ]
-
 
 
 ###Regression model
@@ -255,113 +320,8 @@ DT::datatable(exposure, class = "display", rownames = FALSE, options = list(dom 
                               # pageLength = 15))
 ```
 ---
-### Odds Ratios VL ~ Employment Status
+
 ```{r}
 
-#ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
-
-
-
-ORVL <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.RData")
-#table1::table1(~Variable + OR  | group, data = ORVL)
-row.names(ORVL)[3]<- "Retired"
-row.names(ORVL)[4] <- "Student"
-row.names(ORVL)[5] <- "Unemployed"
-row.names(ORVL)[7] <- "Employed."
-row.names(ORVL)[8] <- "Unemployed."
-row.names(ORVL)[9] <- "Age"
-row.names(ORVL)[12]<- "Transgender"
-row.names(ORVL)[13] <- "Women"
-row.names(ORVL)[16] <- "Yes"
-row.names(ORVL)[19] <- ">12"
-row.names(ORVL)[21] <- "No."
-row.names(ORVL)[22] <- "Yes."
-#ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-names(ORVL)[2] <- "CI.2.5"
-names(ORVL)[3] <- "CI.97.5"
-names(ORVL)[6] <- "CI.2.5"
-names(ORVL)[7] <- "CI.97.5."
-ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-#names(ORVL)[7] <- "CI.2.5."
-#names(ORVL)[8] <- "CI.97.5."
-#names(ORVL)[9] <- "p.value."
-
-#ORVL <- tibble::rownames_to_column(ORVL, "Variable")
-ORVL$N<- "PRUEBA"
-ORVL$L<- "PRUEBA"
-ORVL$M<- "PRUEBA"
-#DT::datatable(ORVL, class = "display", rownames = FALSE, options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 16))
 ```
 
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-# a custom table container
-sketch = htmltools::withTags(table(
-  class = 'display',
-  thead(
-    tr(
-      th(rowspan = 2, 'Variable'),
-      th(colspan = 4, 'Viral Load 50 cp'),
-      th(colspan = 4, 'Viral Load 200 cp')
-    ),
-    tr(
-      #lapply(names(ORVL)[-1], th)
-      lapply(rep(c('OR', 'CI.2.5', 'CI.97.5', 'p-value'), 2), th)
-    )
-  )
-))
-#print(sketch)
-
-
-```
-
-```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORVL, container = sketch, rownames = TRUE,  options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13)) %>% 
-  formatStyle(
-    0,
-    target = "row",
-    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
-    `font-size`="16px"
-  )
-```
-
----
-### Odds Ratios PDC ~ Employment Status
-```{r}
-
-#ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
-
-
-
-ORPDC <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/regressionsPDC.RData")
-#table1::table1(~Variable + OR  | group, data = ORVL)
-row.names(ORPDC)[3]<- "Retired"
-row.names(ORPDC)[4] <- "Student"
-row.names(ORPDC)[5] <- "Unemployed"
-row.names(ORPDC)[7] <- "Employed."
-row.names(ORPDC)[8] <- "Unemployed."
-row.names(ORPDC)[9] <- "Age"
-row.names(ORPDC)[12]<- "Transgender"
-row.names(ORPDC)[13] <- "Women"
-row.names(ORPDC)[16] <- "Yes"
-row.names(ORPDC)[19] <- ">12"
-row.names(ORPDC)[21] <- "No."
-row.names(ORPDC)[22] <- "Yes."
-#ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-names(ORPDC)[2] <- "CI.2.5"
-names(ORPDC)[3] <- "CI.97.5"
-names(ORPDC)[4] <- "p-value"
-
-
-```
-
-
-```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORPDC, rownames = TRUE,  options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13)) %>% 
-  formatStyle(
-    0,
-    target = "row",
-    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
-    `font-size`="16px"
-  )
-```
