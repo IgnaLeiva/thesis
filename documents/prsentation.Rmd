@@ -137,7 +137,7 @@ plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 - Descriptive Statistic 
 - Variable selection using Directed Acyclic Graph (DAG) on Dagitty
 - Multivariable logistic regression
-- Analysis were run in R version 4.1.2 
+- Analyses were performed in R version 4.1.2.
 
 ---
 class: inverse, middle, center
