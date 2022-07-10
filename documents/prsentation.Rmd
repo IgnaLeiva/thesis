@@ -144,30 +144,7 @@ class: inverse, middle, center
 # Some results so far
 
 ---
-## Variable selection 
-### Minimal sufficient adjustment sets the total effect of Employment status on Viral load and PDC. [See](http://dagitty.net/dags.html?id=UDvDOn)
-.pull-left[
-- Age (a)
-- Gender (g)
-- Education Level (e)
-- Addiction (ad)
-       ]
-.pull-right[
-- Homelessness (h)
-- Commodities (c)
-- Migratory background (m)<sup>1</sup>
-- Social priority (s)
-    ]
 
-
-
-###Regression model
-
-
-> $$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$
-
-.center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
----
 class: 
 ## .charite[Covariate distribution]
 
@@ -282,6 +259,30 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
              #   options = list(dom = 'tBp', buttons = c("csv","excel"), 
                               # pageLength = 15))
 ```
+---
+## Variable selection 
+### Minimal sufficient adjustment sets the total effect of Employment status on Viral load and PDC. [See](http://dagitty.net/dags.html?id=UDvDOn)
+.pull-left[
+- Age (a)
+- Gender (g)
+- Education Level (e)
+- Addiction (ad)
+       ]
+.pull-right[
+- Homelessness (h)
+- Commodities (c)
+- Migratory background (m)<sup>1</sup>
+- Social priority (s)
+    ]
+
+
+
+###Regression model
+
+
+> $$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$
+
+.center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
 ## Odds Ratios VL ~ Employment Status
 ```{r}
