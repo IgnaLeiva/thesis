@@ -80,7 +80,7 @@ class: middle
 ## .charite[Data source]
 - **Project**: An AI-based computer platform to characterize and identify the level of adherence to treatment among HIV+ people
 - Cross-sectional study (Feb-Nov 2021)
-  - Self-administer questionnaire
+  - Self-administer online questionnaire
   - Clinical data from pharmacy
 
 ---
