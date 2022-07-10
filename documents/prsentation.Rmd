@@ -193,7 +193,8 @@ DT::datatable(covariates, class = "hover", rownames = FALSE, options = list(dom 
               initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
-        "}")))%>% 
+        "}"),
+columnDefs = list(list(className = 'dt-center', targets = 1))))%>% 
   formatStyle(
     1,
     target = "row",
@@ -221,7 +222,8 @@ DT::datatable(outcome, class = "hover", rownames = FALSE, options = list(dom = '
               initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
-        "}"))) %>% 
+        "}"),
+        columnDefs = list(list(className = 'dt-center', targets = 1)))) %>% 
   formatStyle(
     1,
     target = "row",
@@ -254,7 +256,9 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
               initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
-        "}")))%>% 
+        "}"),
+
+        columnDefs = list(list(className = 'dt-center', targets = 1))))%>% 
  formatStyle(
     1,
     target = "row",
@@ -340,7 +344,8 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
                                                                                  initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
-        "}")))%>% 
+        "}"),
+        columnDefs = list(list(className = 'dt-center', targets = 2:8))))%>% 
   formatStyle(
     0,
     target = "row",
@@ -386,7 +391,8 @@ datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
   initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
-        "}"))) %>% 
+        "}"),
+  columnDefs = list(list(className = 'dt-center', targets = 1:4)))) %>% 
   formatStyle(
     0,
     target = "row",
@@ -394,3 +400,19 @@ datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
     `font-size`="16px"
   )
 ```
+---
+# Discussion
+
+.pull-left[
+## .charite[Viral Load Outcome]
+- Similar values from other studies
+- Education a key factor
+- Addiction 
+   ]
+   
+   
+.pull-left[
+## .charite[PDC Outcome]
+- PDC has been considered a good adherence proxy.
+
+   ]
