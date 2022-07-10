@@ -40,6 +40,8 @@ class: title-slide, center, middle
 # `r rmarkdown::metadata$title`
 <br>
 ### .black[`r rmarkdown::metadata$author`]
+<br>
+ Program: MSc in Epidemiology
 
 ---
 class: inverse, middle, center
