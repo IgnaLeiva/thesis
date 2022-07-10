@@ -105,6 +105,8 @@ class: middle
 - Homelessness (binary)
 - Addictions (address with 1 question)
    ]
+   
+.center[.footnote[En el último año, ¿qué tan frecuentemente sentiste que necesitabas o querías dejar de consumir drogas o alcohol y  que no fuiste capaz?]]
 ---
 # Operazionalization
 ## Proportion of days covered (PDC), AdhereR
@@ -284,7 +286,7 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
-## Odds Ratios VL ~ Employment Status
+## Odds Ratios VL ~ Employment Status (724)
 ```{r}
 
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
@@ -391,7 +393,23 @@ names(ORPDC)[4] <- "p-value"
 
 
 ```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
+sketch1 = htmltools::withTags(table(
+  class = 'hover',
+  thead(
+    tr(
+      th(rowspan = 2, 'Variable'),
+      th(colspan = 4, 'nonAdherent')
+    ),
+    tr(
+      #lapply(names(ORVL)[-1], th)
+      lapply(rep(c('OR', 'CI.2.5', 'CI.97.5', 'p-value'), 1), th)
+    )
+  )
+))
+
+
+
+datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options = list(
   dom = 'tBp', pageLength = 13,
   initComplete = JS(
         "function(settings, json) {",
@@ -404,6 +422,8 @@ datatable(ORPDC, rownames = TRUE, class = "hover", options = list(
     fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
     `font-size`="16px"
   )
+
+
 ```
 
 ---
