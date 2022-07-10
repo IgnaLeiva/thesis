@@ -165,7 +165,7 @@ class: inverse, middle, center
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
 class: 
-### Domographic
+## .charite[Domographic]
 
 
 ```{css, echo = F}
@@ -210,7 +210,7 @@ DT::datatable(covariates, class = "hover", rownames = FALSE, options = list(dom 
 ```
 
 ---
-### Outcomes
+## .charite[Outcomes]
 ```{r}
 outcome <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/outcome.RData")
 
@@ -238,7 +238,7 @@ DT::datatable(outcome, class = "hover", rownames = FALSE, options = list(dom = '
 ```
 
 ---
-### Exposures
+## .charite[Exposures]
 
 ```{r}
 
@@ -275,7 +275,7 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
                               # pageLength = 15))
 ```
 ---
-### Odds Ratios VL ~ Employment Status
+## Odds Ratios VL ~ Employment Status
 ```{r}
 
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
@@ -350,7 +350,7 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
 ```
 
 ---
-### Odds Ratios PDC ~ Employment Status
+## Odds Ratios PDC ~ Employment Status
 ```{r}
 
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
