@@ -99,7 +99,7 @@ class: middle
 - Social priority (Metropolitan zone)
 - Type of ARV (STR & family)
 - Migratory background (binary)
-- Commodities (binary)
+- Comorbidities (binary)
 - Health insurance (strata from A to D)
 - Time on ARV (years)
 - Homelessness (binary)
