@@ -294,6 +294,41 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 
 
 ORVL <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.RData")
+names(ORVL)[1] <- "OR(1)"
+names(ORVL)[2] <- "CI.2.5(1)"
+names(ORVL)[3] <- "CI.97.5(1)"
+names(ORVL)[4] <- "p-value(1)"
+names(ORVL)[5] <- "OR(2)"
+names(ORVL)[6] <- "CI.2.5(2)"
+names(ORVL)[7] <- "CI.97.5(2)"
+names(ORVL)[8] <- "p-value(2)"
+ORVL$'CI.97.5(2)'[[3]] <- "Inf"
+
+# Merge columns
+#'OR_CI.95(1)# model VL= 50 cp
+#'OR_CI.95(2)' # model VL=200 cp
+
+ORVL$'OR_CI.95(1)' <- paste("(",ORVL$'CI.2.5(1)',"-",ORVL$'CI.97.5(1)',")", sep = "")
+ORVL$'OR_CI.95(1)' <- paste(ORVL$'OR(1)',ORVL$'OR_CI.95(1)')
+
+ORVL$'OR_CI.95(2)' <- paste("(",ORVL$'CI.2.5(2)',"-",ORVL$'CI.97.5(2)',")", sep = "")
+ORVL$'OR_CI.95(2)' <- paste(ORVL$'OR(2)',ORVL$'OR_CI.95(2)')
+
+# Delete
+
+ORVL$'OR_CI.95(1)' <- ifelse(ORVL$'OR_CI.95(1)' == " (-)", NA, ORVL$'OR_CI.95(1)')
+ORVL$'OR_CI.95(2)' <- ifelse(ORVL$'OR_CI.95(2)' == " (-)", NA, ORVL$'OR_CI.95(2)')
+ORVL$'OR_CI.95(1)' <- ifelse(ORVL$'OR_CI.95(1)' == "Ref (-)","Ref" , ORVL$'OR_CI.95(1)')
+ORVL$'OR_CI.95(2)' <- ifelse(ORVL$'OR_CI.95(2)' == "Ref (-)","Ref" , ORVL$'OR_CI.95(2)')
+
+# select
+ORVL <- ORVL %>% 
+       select('OR_CI.95(1)', 'p-value(1)','OR_CI.95(2)', 'p-value(2)' )
+# Change name column
+names(ORVL)[1] <- "OR (CI.95)"
+names(ORVL)[2] <- "p-value"
+names(ORVL)[3] <- "OR (CI.95)"
+names(ORVL)[4] <- "p-value"
 #table1::table1(~Variable + OR  | group, data = ORVL)
 row.names(ORVL)[3]<- "Retired"
 row.names(ORVL)[4] <- "Student"
@@ -308,19 +343,10 @@ row.names(ORVL)[19] <- ">12"
 row.names(ORVL)[21] <- "No."
 row.names(ORVL)[22] <- "Yes."
 #ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-names(ORVL)[2] <- "CI.2.5"
-names(ORVL)[3] <- "CI.97.5"
-names(ORVL)[6] <- "CI.2.5"
-names(ORVL)[7] <- "CI.97.5."
-ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-#names(ORVL)[7] <- "CI.2.5."
-#names(ORVL)[8] <- "CI.97.5."
-#names(ORVL)[9] <- "p.value."
+
 
 #ORVL <- tibble::rownames_to_column(ORVL, "Variable")
-ORVL$N<- "PRUEBA"
-ORVL$L<- "PRUEBA"
-ORVL$M<- "PRUEBA"
+
 #DT::datatable(ORVL, class = "display", rownames = FALSE, options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 16))
 ```
 
@@ -332,12 +358,12 @@ sketch = htmltools::withTags(table(
   thead(
     tr(
       th(rowspan = 2, 'Variable'),
-      th(colspan = 4, 'Viral Load 50 cp'),
-      th(colspan = 4, 'Viral Load 200 cp')
+      th(colspan = 2, 'Viral Load 50 cp'),
+      th(colspan = 2, 'Viral Load 200 cp')
     ),
     tr(
       #lapply(names(ORVL)[-1], th)
-      lapply(rep(c('OR', 'CI.2.5', 'CI.97.5', 'p-value'), 2), th)
+      lapply(rep(c('OR (CI.95)','p-value'), 2), th)
     )
   )
 ))
@@ -352,7 +378,7 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
         "}"),
-        columnDefs = list(list(className = 'dt-center', targets = 2:8))))%>% 
+        columnDefs = list(list(className = 'dt-center', targets = 1:4))))%>% 
   formatStyle(
     0,
     target = "row",
@@ -360,7 +386,6 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
     `font-size`="16px"
   )
 ```
-
 ---
 ## Odds Ratios PDC ~ Employment Status
 ```{r}
@@ -371,6 +396,12 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
 
 ORPDC <- readRDS("/Users/igna/Documents/R projects/thesis_presentation/documents/regressionsPDC.RData")
 #table1::table1(~Variable + OR  | group, data = ORVL)
+ORPDC$CI.95 <- paste(ORPDC$CI.2.5..,"-",ORPDC$CI.97.5.. ) 
+ORPDC <- ORPDC %>% 
+         select(OR, CI.95, p.value) %>% 
+         mutate(CI.95 = ifelse(CI.95 == " - ", NA, CI.95))
+
+
 row.names(ORPDC)[3]<- "Retired"
 row.names(ORPDC)[4] <- "Student"
 row.names(ORPDC)[5] <- "Unemployed"
@@ -384,9 +415,8 @@ row.names(ORPDC)[19] <- ">12"
 row.names(ORPDC)[21] <- "No."
 row.names(ORPDC)[22] <- "Yes."
 #ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
-names(ORPDC)[2] <- "CI.2.5"
-names(ORPDC)[3] <- "CI.97.5"
-names(ORPDC)[4] <- "p-value"
+
+names(ORPDC)[3] <- "p-value"
 
 
 ```
@@ -398,11 +428,11 @@ sketch1 = htmltools::withTags(table(
   thead(
     tr(
       th(rowspan = 2, 'Variable'),
-      th(colspan = 4, 'nonAdherent')
+      th(colspan = 3, 'nonAdherent')
     ),
     tr(
       #lapply(names(ORVL)[-1], th)
-      lapply(rep(c('OR', 'CI.2.5', 'CI.97.5', 'p-value'), 1), th)
+      lapply(rep(c('OR', 'CI.95', 'p-value'), 1), th)
     )
   )
 ))
@@ -415,15 +445,13 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
         "}"),
-  columnDefs = list(list(className = 'dt-center', targets = 1:4)))) %>% 
+  columnDefs = list(list(className = 'dt-center', targets = 1:3)))) %>% 
   formatStyle(
     0,
     target = "row",
     fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
     `font-size`="16px"
   )
-
-
 ```
 
 ---
@@ -454,4 +482,6 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
 - Survey was conducted during COVID (employment affected)
 - Some difficulties to laboratory and medical care
 
+
+---
 
