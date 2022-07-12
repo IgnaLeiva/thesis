@@ -335,13 +335,13 @@ row.names(ORVL)[4] <- "Student"
 row.names(ORVL)[5] <- "Unemployed"
 row.names(ORVL)[7] <- "Employed."
 row.names(ORVL)[8] <- "Unemployed."
-row.names(ORVL)[9] <- "Age"
-row.names(ORVL)[12]<- "Transgender"
-row.names(ORVL)[13] <- "Women"
-row.names(ORVL)[16] <- "Yes"
-row.names(ORVL)[19] <- ">12"
-row.names(ORVL)[21] <- "No."
-row.names(ORVL)[22] <- "Yes."
+#row.names(ORVL)[9] <- "Age"
+row.names(ORVL)[13]<- "Transgender"
+row.names(ORVL)[14] <- "Women"
+row.names(ORVL)[17] <- "Yes"
+row.names(ORVL)[20] <- ">12"
+row.names(ORVL)[22] <- "No."
+row.names(ORVL)[23] <- "Yes."
 #ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
 
 
@@ -373,7 +373,7 @@ sketch = htmltools::withTags(table(
 ```
 
 ```{r, echo=FALSE, message= FALSE, warning = FALSE}
-datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 13,
+datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = list(dom = 'tBp', buttons = c("csv","excel"), pageLength = 14,
                                                                                  initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
@@ -382,7 +382,7 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
   formatStyle(
     0,
     target = "row",
-    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
+    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Age (years)","Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
     `font-size`="16px"
   )
 ```
@@ -407,13 +407,13 @@ row.names(ORPDC)[4] <- "Student"
 row.names(ORPDC)[5] <- "Unemployed"
 row.names(ORPDC)[7] <- "Employed."
 row.names(ORPDC)[8] <- "Unemployed."
-row.names(ORPDC)[9] <- "Age"
-row.names(ORPDC)[12]<- "Transgender"
-row.names(ORPDC)[13] <- "Women"
-row.names(ORPDC)[16] <- "Yes"
-row.names(ORPDC)[19] <- ">12"
-row.names(ORPDC)[21] <- "No."
-row.names(ORPDC)[22] <- "Yes."
+#row.names(ORPDC)[9] <- "Age"
+row.names(ORPDC)[13]<- "Transgender"
+row.names(ORPDC)[14] <- "Women"
+row.names(ORPDC)[17] <- "Yes"
+row.names(ORPDC)[20] <- ">12"
+row.names(ORPDC)[22] <- "No."
+row.names(ORPDC)[23] <- "Yes."
 #ORVL$CI.97.5.[[3]] <- "inf" # change a value by position, third position in vector CI.97.5
 
 names(ORPDC)[3] <- "p-value"
@@ -440,7 +440,7 @@ sketch1 = htmltools::withTags(table(
 
 
 datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options = list(
-  dom = 'tBp', pageLength = 13,
+  dom = 'tBp', pageLength = 14,
   initComplete = JS(
         "function(settings, json) {",
         "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
@@ -449,7 +449,7 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
   formatStyle(
     0,
     target = "row",
-    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
+    fontWeight = styleEqual(c("Employment Status (4L)","Employment Status (2L)", "Age (years)","Gender", "Social priority", "Education Level (years)", "Addictions"), "bold"),
     `font-size`="16px"
   )
 ```
