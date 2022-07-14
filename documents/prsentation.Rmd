@@ -9,6 +9,7 @@ output:
       - default
       - css/thesis.css
       - css/thesis-fonts.css
+      - bullet.css
     lib_dir: libs
     seal: false
     nature:
@@ -75,6 +76,13 @@ class: middle
 
 
 ---
+```{css, echo = F}
+li::marker {
+  content: "• ";
+  color: "#EFBE43";
+}
+```
+
 # Methodology
 
 ## .charite[Data source]
@@ -137,10 +145,10 @@ plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 # Data Analysis 
 
 - Descriptive Statistics
-- Variable selection using Directed Acyclic Graph (DAG) on Dagitty
+- Variable selection using Directed Acyclic Graph (DAG) on Dagitty<sup>1</sup>
 - Multivariable logistic regression
 - Analyses were performed in R version 4.1.2.
-
+.center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
 class: inverse, middle, center
 # Some results so far
@@ -178,7 +186,7 @@ DT::datatable(covariates, class = "hover", rownames = FALSE, options = list(dom 
               #caption = 'Table 1: Demographic Distribution.'
               initComplete = JS(
         "function(settings, json) {",
-        "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
+        "$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});",
         "}"),
 columnDefs = list(list(className = 'dt-center', targets = 1))))%>% 
   formatStyle(
@@ -207,7 +215,7 @@ outcome$variable[outcome$variable == "adherence levels"] <- "PDC levels"
 DT::datatable(outcome, class = "hover", rownames = FALSE, options = list(dom = 'tBp', dom = 'tip', pageLength = 14, info = FALSE, autoWidth = FALSE, #,caption = 'Table 2: Outcome distribution.'
               initComplete = JS(
         "function(settings, json) {",
-        "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
+        "$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});",
         "}"),
         columnDefs = list(list(className = 'dt-center', targets = 1)))) %>% 
   formatStyle(
@@ -241,7 +249,7 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
               #caption = 'Table 3: Exposure distribution.'
               initComplete = JS(
         "function(settings, json) {",
-        "$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});",
+        "$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});",
         "}"),
 
         columnDefs = list(list(className = 'dt-center', targets = 1))))%>% 
@@ -276,7 +284,7 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 .pull-right[
 - Homelessness (h)
 - Commodities (c)
-- Migratory background (m)<sup>1</sup>
+- Migratory background (m)
 - Social priority (s)
     ]
 
@@ -284,10 +292,12 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 
 ###Regression model
 
+<blockquote>
+<br/> $$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$ 
+<br/>
+<blockquote>
 
-> $$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$
 
-.center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
 ## Odds Ratios: Detectable Viral Load ~ Employment Status
 ```{r}
@@ -461,9 +471,8 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
 
 ---
 # Discussion
+> **Viral Load Outcome**
 
-.pull-left[
-## .charite[Viral Load Outcome]
 - Similar values from other studies
 - Education a key factor
 - Social priority:
@@ -473,13 +482,12 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
    ]
    
    
-.pull-left[
-## .charite[PDC Outcome]
+> **PDC Outcome** 
+
 - PDC has been considered a good adherence proxy
 - Education plays a role.
 
 
-   ]
 ---
 # .charite[Limitations]
 
@@ -490,6 +498,4 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
 - Survey was conducted during COVID (employment affected)
 - Some difficulties to laboratory and medical care
 
-
----
 

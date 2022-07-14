@@ -126,7 +126,7 @@ pre code {
   blockquote {
   background:          #faf5f5;
   border-left:         solid 5px #9d0208;
-  margin:             1.5em 10px;
+  margin:              1.5em 10px;
   padding-left:        1.2em;
 }
 
@@ -191,14 +191,6 @@ pre code {
 
 
 
-.center2 {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 
 
 

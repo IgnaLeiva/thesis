@@ -17,6 +17,7 @@
     <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
     <link rel="stylesheet" href="css/thesis.css" type="text/css" />
     <link rel="stylesheet" href="css/thesis-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="bullet.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -65,6 +66,13 @@ class: middle
 
 
 ---
+&lt;style type="text/css"&gt;
+li::marker {
+  content: "• ";
+  color: "#EFBE43";
+}
+&lt;/style&gt;
+
 # Methodology
 
 ## .charite[Data source]
@@ -101,15 +109,15 @@ class: middle
 # Operazionalization
 ## Proportion of days covered (PDC), AdhereR
 
-![](prsentation_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+![](prsentation_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 ---
 # Data Analysis 
 
 - Descriptive Statistics
-- Variable selection using Directed Acyclic Graph (DAG) on Dagitty
+- Variable selection using Directed Acyclic Graph (DAG) on Dagitty&lt;sup&gt;1&lt;/sup&gt;
 - Multivariable logistic regression
 - Analyses were performed in R version 4.1.2.
-
+.center[.footnote[&lt;sup&gt;1&lt;/sup&gt; check [Daggity](http://dagitty.net)]]
 ---
 class: inverse, middle, center
 # Some results so far
@@ -130,19 +138,19 @@ table {
 &lt;/style&gt;
 
 
-<div id="htmlwidget-2ad4e8557c6dc1743e1e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2ad4e8557c6dc1743e1e">{"x":{"filter":"none","vertical":false,"data":[["","Gender","  men","  Transgender","  women","Age","  Mean (SD)","  Median [Min, Max]","Education (years)","&lt;=12","&gt;12","Comorbidities","  yes","  no","migrant","  no","  yes","addiction","  no","  yes","Social priority","  no","  yes"],["(N=748)","","697 (93.2%)","6 (0.802%)","45 (6.02%)","","39.3 (10.5)","37.4 [19.5, 76.6]","","204 (30.7%)","461 (69.3%)","","276 (36.9%)","472 (63.1%)","","547 (73.1%)","201 (26.9%)","","589 (79.9%)","148 (20.1%)","","545 (75.3%)","179 (24.7%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Gender\" ? \"bold\" : value == \"Age\" ? \"bold\" : value == \"Education (years)\" ? \"bold\" : value == \"Comorbidities\" ? \"bold\" : value == \"migrant\" ? \"bold\" : value == \"addiction\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-d87f7f53caadc2bd71fa" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d87f7f53caadc2bd71fa">{"x":{"filter":"none","vertical":false,"data":[["","Gender","  men","  Transgender","  women","Age","  Mean (SD)","  Median [Min, Max]","Education (years)","&lt;=12","&gt;12","Comorbidities","  yes","  no","migrant","  no","  yes","addiction","  no","  yes","Social priority","  no","  yes"],["(N=748)","","697 (93.2%)","6 (0.802%)","45 (6.02%)","","39.3 (10.5)","37.4 [19.5, 76.6]","","204 (30.7%)","461 (69.3%)","","276 (36.9%)","472 (63.1%)","","547 (73.1%)","201 (26.9%)","","589 (79.9%)","148 (20.1%)","","545 (75.3%)","179 (24.7%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Gender\" ? \"bold\" : value == \"Age\" ? \"bold\" : value == \"Education (years)\" ? \"bold\" : value == \"Comorbidities\" ? \"bold\" : value == \"migrant\" ? \"bold\" : value == \"addiction\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
 
 ---
 ## .charite[Outcome distribution]
-<div id="htmlwidget-8d105313903769833e1e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8d105313903769833e1e">{"x":{"filter":"none","vertical":false,"data":[["","Viral load status (50 cp)","  detectable","  undetectable","Viral load status (200 cp)","  detectable","  undetectable","PDC (95%)","  adherent","  nonAdherent","PDC levels","  poor","  suboptimal","  optimal"],["(N=748)","","58 (7.8%)","690 (92.2%)","","25 (3.3%)","723 (96.7%)","","449 (60.0%)","299 (40.0%)","","114 (15.2%)","88 (11.8%)","546 (73.0%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Overall<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"info":false,"autoWidth":false,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Viral load status (50 cp)\" ? \"bold\" : value == \"Viral load status (200 cp)\" ? \"bold\" : value == \"PDC (95%)\" ? \"bold\" : value == \"PDC levels\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-7b695858984b1cf2912f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b695858984b1cf2912f">{"x":{"filter":"none","vertical":false,"data":[["","Viral load status (50 cp)","  detectable","  undetectable","Viral load status (200 cp)","  detectable","  undetectable","PDC (95%)","  adherent","  nonAdherent","PDC levels","  poor","  suboptimal","  optimal"],["(N=748)","","58 (7.8%)","690 (92.2%)","","25 (3.3%)","723 (96.7%)","","449 (60.0%)","299 (40.0%)","","114 (15.2%)","88 (11.8%)","546 (73.0%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Overall<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"info":false,"autoWidth":false,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Viral load status (50 cp)\" ? \"bold\" : value == \"Viral load status (200 cp)\" ? \"bold\" : value == \"PDC (95%)\" ? \"bold\" : value == \"PDC levels\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
 
 ---
 ## .charite[Exposure distribution]
 
-<div id="htmlwidget-2458ff0b176d69b8b4de" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2458ff0b176d69b8b4de">{"x":{"filter":"none","vertical":false,"data":[["","Employment Status (4 Levels)","  employment","  retired","  student","  unemployment","Employment Status (2 Levels)","  employment","  unemployment"],["(N=748)","","521 (69.7%)","24 (3.21%)","47 (6.28%)","156 (20.9%)","","568 (75.9%)","180 (24.1%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":16,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,16,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4 Levels)\" ? \"bold\" : value == \"Employment Status (2 Levels)\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-c9991e662c065c3e0e03" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c9991e662c065c3e0e03">{"x":{"filter":"none","vertical":false,"data":[["","Employment Status (4 Levels)","  employment","  retired","  student","  unemployment","Employment Status (2 Levels)","  employment","  unemployment"],["(N=748)","","521 (69.7%)","24 (3.21%)","47 (6.28%)","156 (20.9%)","","568 (75.9%)","180 (24.1%)"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th>variable<\/th>\n      <th>Total<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":16,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#faf5f5', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,16,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4 Levels)\" ? \"bold\" : value == \"Employment Status (2 Levels)\" ? \"bold\" : null,'font-size':'16px'});\nvar value=data[1]; $(row).css({'font-weight':value == \"(N=748)\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
 ---
 ## Variable selection 
 ### Minimal sufficient adjustment sets the total effect of Employment status on Viral load and PDC. [See](http://dagitty.net/dags.html?id=UDvDOn)
@@ -155,7 +163,7 @@ table {
 .pull-right[
 - Homelessness (h)
 - Commodities (c)
-- Migratory background (m)&lt;sup&gt;1&lt;/sup&gt;
+- Migratory background (m)
 - Social priority (s)
     ]
 
@@ -163,10 +171,12 @@ table {
 
 ###Regression model
 
+&lt;blockquote&gt;
+&lt;br/&gt; `$$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$` 
+&lt;br/&gt;
+&lt;blockquote&gt;
 
-&gt; `$$\scriptsize \log_e (odds[detectable])=\beta_0 + \beta_{EmpS}\times EmpS + \beta_{a}\times a + \beta_{g}\times g + \beta_{c}\times c + \beta_{e}\times e + \beta_{h}\times h + \beta_{s}\times s + \beta_{m}\times m + s + \beta_{ad}\times ad$$`
 
-.center[.footnote[&lt;sup&gt;1&lt;/sup&gt; check [Daggity](http://dagitty.net)]]
 ---
 ## Odds Ratios: Detectable Viral Load ~ Employment Status
 
@@ -174,21 +184,20 @@ table {
 
 
 
-<div id="htmlwidget-1cd8a59609e6c6480d68" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1cd8a59609e6c6480d68">{"x":{"filter":"none","vertical":false,"class":"hover","data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age (years)","age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","&lt;=12","&gt;12","Addictions","No.","Yes."],[null,"Ref","1.866 (0.257-8.576)","0.473 (0.069-1.831)","1.819 (0.968-3.324)",null,"Ref","1.902 (1.033-3.425)",null,"0.998 (0.972-1.023)",null,"Ref","12.48 (2.26-68.963)","1.6 (0.534-3.901)",null,"Ref","0.721 (0.355-1.36)",null,"Ref","0.553 (0.316-0.978)",null,"Ref","1.23 (0.626-2.288)"],["","","0.466","0.348","0.056","","","0.035","","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"],[null,"Ref","0 (0-Inf)","0.427 (0.021-2.611)","1.324 (0.488-3.265)",null,"Ref","1.331 (0.494-3.264)",null,"0.975 (0.932-1.015)",null,"Ref","16.35 (2.177-89.033)","2.393 (0.548-7.348)",null,"Ref","0.713 (0.233-1.807)",null,"Ref","0.611 (0.265-1.459)",null,"Ref","1.215 (0.427-3.005)"],["","","0.987","0.447","0.557","","","0.548","","0.242","","","0.002","0.173","","","0.509","","","0.253","","","0.69"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th rowspan=\"2\">Variable<\/th>\n      <th colspan=\"2\">Viral Load 50 cp<\/th>\n      <th colspan=\"2\">Viral Load 200 cp<\/th>\n    <\/tr>\n    <tr>\n      <th>OR (CI.95)<\/th>\n      <th>p-value<\/th>\n      <th>OR (CI.95)<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Age (years)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-fa0b8e5e3abbf8e65089" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fa0b8e5e3abbf8e65089">{"x":{"filter":"none","vertical":false,"class":"hover","data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age (years)","age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","&lt;=12","&gt;12","Addictions","No.","Yes."],[null,"Ref","1.866 (0.257-8.576)","0.473 (0.069-1.831)","1.819 (0.968-3.324)",null,"Ref","1.902 (1.033-3.425)",null,"0.998 (0.972-1.023)",null,"Ref","12.48 (2.26-68.963)","1.6 (0.534-3.901)",null,"Ref","0.721 (0.355-1.36)",null,"Ref","0.553 (0.316-0.978)",null,"Ref","1.23 (0.626-2.288)"],["","","0.466","0.348","0.056","","","0.035","","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"],[null,"Ref","0 (0-Inf)","0.427 (0.021-2.611)","1.324 (0.488-3.265)",null,"Ref","1.331 (0.494-3.264)",null,"0.975 (0.932-1.015)",null,"Ref","16.35 (2.177-89.033)","2.393 (0.548-7.348)",null,"Ref","0.713 (0.233-1.807)",null,"Ref","0.611 (0.265-1.459)",null,"Ref","1.215 (0.427-3.005)"],["","","0.987","0.447","0.557","","","0.548","","0.242","","","0.002","0.173","","","0.509","","","0.253","","","0.69"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th rowspan=\"2\">Variable<\/th>\n      <th colspan=\"2\">Viral Load 50 cp<\/th>\n      <th colspan=\"2\">Viral Load 200 cp<\/th>\n    <\/tr>\n    <tr>\n      <th>OR (CI.95)<\/th>\n      <th>p-value<\/th>\n      <th>OR (CI.95)<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","buttons":["csv","excel"],"pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Age (years)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
 ---
 ## Odds Ratios: PDC ~ Employment Status
 
 
 
-<div id="htmlwidget-2207502b41b495e77e4b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2207502b41b495e77e4b">{"x":{"filter":"none","vertical":false,"class":"hover","data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age (years)","age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","&lt;=12","&gt;12","Addictions","No.","Yes."],["","Ref","2.186","0.819","1.032","","Ref","1.113","","0.998","","Ref","12.48","1.6","","Ref","0.721","","Ref","0.553","","Ref","1.23"],[null,null,"0.769 - 5.97","0.42 - 1.581","0.699 - 1.515",null,null,"0.768 - 1.61",null,"0.972 - 1.023",null,null,"2.26 - 68.963","0.534 - 3.901",null,null,"0.355 - 1.36",null,null,"0.316 - 0.978",null,null,"0.626 - 2.288"],["","","0.13","0.552","0.874","","","0.569","","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th rowspan=\"2\">Variable<\/th>\n      <th colspan=\"3\">nonAdherent<\/th>\n    <\/tr>\n    <tr>\n      <th>OR<\/th>\n      <th>CI.95<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Age (years)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-734ed227e49d35287279" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-734ed227e49d35287279">{"x":{"filter":"none","vertical":false,"class":"hover","data":[["Employment Status (4L)","Employed","Retired","Student","Unemployed","Employment Status (2L)","Employed.","Unemployed.","Age (years)","age","Gender","Men","Transgender","Women","Social priority","No","Yes","Education Level (years)","&lt;=12","&gt;12","Addictions","No.","Yes."],["","Ref","2.186","0.819","1.032","","Ref","1.113","","0.998","","Ref","12.48","1.6","","Ref","0.721","","Ref","0.553","","Ref","1.23"],[null,null,"0.769 - 5.97","0.42 - 1.581","0.699 - 1.515",null,null,"0.768 - 1.61",null,"0.972 - 1.023",null,null,"2.26 - 68.963","0.534 - 3.901",null,null,"0.355 - 1.36",null,null,"0.316 - 0.978",null,null,"0.626 - 2.288"],["","","0.13","0.552","0.874","","","0.569","","0.879","","","0.002","0.345","","","0.336","","","0.039","","","0.527"]],"container":"<table class=\"hover\">\n  <thead>\n    <tr>\n      <th rowspan=\"2\">Variable<\/th>\n      <th colspan=\"3\">nonAdherent<\/th>\n    <\/tr>\n    <tr>\n      <th>OR<\/th>\n      <th>CI.95<\/th>\n      <th>p-value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","pageLength":14,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color': '#f7ebec', 'color': 'black'});\n}","columnDefs":[{"className":"dt-center","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,14,25,50,100],"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[0]; $(row).css({'font-weight':value == \"Employment Status (4L)\" ? \"bold\" : value == \"Employment Status (2L)\" ? \"bold\" : value == \"Age (years)\" ? \"bold\" : value == \"Gender\" ? \"bold\" : value == \"Social priority\" ? \"bold\" : value == \"Education Level (years)\" ? \"bold\" : value == \"Addictions\" ? \"bold\" : null,'font-size':'16px'});\n}"}},"evals":["options.initComplete","options.rowCallback"],"jsHooks":[]}</script>
 
 ---
 # Discussion
+&gt; **Viral Load Outcome**
 
-.pull-left[
-## .charite[Viral Load Outcome]
 - Similar values from other studies
 - Education a key factor
 - Social priority:
@@ -198,13 +207,12 @@ table {
    ]
    
    
-.pull-left[
-## .charite[PDC Outcome]
+&gt; **PDC Outcome** 
+
 - PDC has been considered a good adherence proxy
 - Education plays a role.
 
 
-   ]
 ---
 # .charite[Limitations]
 
@@ -215,8 +223,6 @@ table {
 - Survey was conducted during COVID (employment affected)
 - Some difficulties to laboratory and medical care
 
-
----
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
