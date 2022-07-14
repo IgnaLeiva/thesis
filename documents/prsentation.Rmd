@@ -136,7 +136,7 @@ plot(PDC12m, patients.to.plot=c("1"), show.legend= TRUE)
 ---
 # Data Analysis 
 
-- Descriptive Statistic 
+- Descriptive Statistics
 - Variable selection using Directed Acyclic Graph (DAG) on Dagitty
 - Multivariable logistic regression
 - Analyses were performed in R version 4.1.2.
