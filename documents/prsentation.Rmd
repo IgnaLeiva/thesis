@@ -289,9 +289,9 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
-## Odds Ratios: Detectable Viral Load ~ Employment Status (724)
+## Odds Ratios: Detectable Viral Load ~ Employment Status
 ```{r}
-
+# (724)
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
 
 
