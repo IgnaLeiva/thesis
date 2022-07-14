@@ -170,6 +170,9 @@ covariates$variable[covariates$variable == "n_year_education"] <- "Education (ye
 covariates$variable[covariates$variable == "Did patient has chornic disease (no = 1, yes = 0 "] <- "Comorbidities"
 covariates$variable[covariates$variable == "social_priority"] <- "Social priority"
 
+#change a value selected the column and row
+covariates$variable[[10]] <- "<=12"
+covariates$variable[[11]] <- ">12"
 
 DT::datatable(covariates, class = "hover", rownames = FALSE, options = list(dom = 'tBp', pageLength = 14,#, width = 800,
               #caption = 'Table 1: Demographic Distribution.'
@@ -286,7 +289,7 @@ DT::datatable(exposure, class = "hover", rownames = FALSE, options = list(dom = 
 
 .center[.footnote[<sup>1</sup> check [Daggity](http://dagitty.net)]]
 ---
-## Odds Ratios VL ~ Employment Status (724)
+## Odds Ratios: Detectable Viral Load ~ Employment Status (724)
 ```{r}
 
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
@@ -339,6 +342,7 @@ row.names(ORVL)[8] <- "Unemployed."
 row.names(ORVL)[13]<- "Transgender"
 row.names(ORVL)[14] <- "Women"
 row.names(ORVL)[17] <- "Yes"
+row.names(ORVL)[19] <- "<=12"
 row.names(ORVL)[20] <- ">12"
 row.names(ORVL)[22] <- "No."
 row.names(ORVL)[23] <- "Yes."
@@ -387,7 +391,7 @@ datatable(ORVL, container = sketch, rownames = TRUE, class = "hover", options = 
   )
 ```
 ---
-## Odds Ratios PDC ~ Employment Status
+## Odds Ratios: PDC ~ Employment Status
 ```{r}
 
 #ORVL <- readxl::read_excel("/Users/igna/Documents/R projects/thesis_presentation/documents/RegressionVL.xlsx", sheet = 1)
@@ -411,6 +415,7 @@ row.names(ORPDC)[8] <- "Unemployed."
 row.names(ORPDC)[13]<- "Transgender"
 row.names(ORPDC)[14] <- "Women"
 row.names(ORPDC)[17] <- "Yes"
+row.names(ORPDC)[19] <- "<=12"
 row.names(ORPDC)[20] <- ">12"
 row.names(ORPDC)[22] <- "No."
 row.names(ORPDC)[23] <- "Yes."
@@ -461,6 +466,9 @@ datatable(ORPDC, container = sketch1, rownames = TRUE, class = "hover", options 
 ## .charite[Viral Load Outcome]
 - Similar values from other studies
 - Education a key factor
+- Social priority:
+  - Stigma
+  - Access to health care
 - Addiction 
    ]
    
